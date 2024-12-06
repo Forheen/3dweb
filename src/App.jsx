@@ -59,7 +59,7 @@ function App() {
           >
             <ambientLight intensity={0.5} />
             <directionalLight position={[5, 5, 5]} />
-            <Model url="/model.glb" /> {/* Ensure the correct path to your model */}
+            <Model url="../model.glb" /> {/* Ensure the correct path to your model */}
             <OrbitControls />
           </Canvas>
         </div>
