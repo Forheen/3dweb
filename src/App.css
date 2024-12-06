@@ -1,0 +1,43 @@
+.App {
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  display: flex;
+}
+
+.container {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(to right,#530505 80%, white 0%); /* Split the background */
+overflow: visible;
+  position: relative;
+}
+
+.left-side {
+  width: 40%;
+  height: 100%;
+  position: relative;
+  z-index: 1; /* Ensure left-side is in front */
+  overflow:visible; /* Ensure content is clipped within the left-side */
+}
+.right-side {
+  width: 60%;
+  height: 100%;
+  z-index: 0; /* Ensure right-side is behind */
+  position: relative;
+  overflow-y: scroll; /* Makes the right side scrollable */
+  scrollbar-width: none; /* For Firefox */
+}
+
+.right-side::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Edge */
+}
+/* Optional: Add any other styling you want for your model container */
+canvas {
+  position: absolute;
+  top: 0;
+  left: 50%; /* Position the model to overflow into the right side */
+  z-index: 2; /* Ensure the canvas stays above the background */
+  transform: translateX(-50%); /* Center the canvas */
+}
