@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { useRef, useState, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
@@ -59,7 +61,7 @@ function App() {
           >
             <ambientLight intensity={0.5} />
             <directionalLight position={[5, 5, 5]} />
-            <Model url="../model.glb" /> {/* Ensure the correct path to your model */}
+            <Model url="./model.glb" /> {/* Ensure the correct path to your model */}
             <OrbitControls />
           </Canvas>
         </div>

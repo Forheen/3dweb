@@ -18,6 +18,7 @@ overflow: visible;
   width: 40%;
   height: 100%;
   position: relative;
+
   z-index: 1; /* Ensure left-side is in front */
   overflow:visible; /* Ensure content is clipped within the left-side */
 }
@@ -27,12 +28,9 @@ overflow: visible;
   z-index: 0; /* Ensure right-side is behind */
   position: relative;
   overflow-y: scroll; /* Makes the right side scrollable */
-  scrollbar-width: none; /* For Firefox */
+  scrollbar-width: 1px; /* For Firefox */
 }
 
-.right-side::-webkit-scrollbar {
-  display: none; /* For Chrome, Safari, and Edge */
-}
 /* Optional: Add any other styling you want for your model container */
 canvas {
   position: absolute;
