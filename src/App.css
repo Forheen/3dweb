@@ -3,34 +3,123 @@
   width: 100vw;
   margin: 0;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  position: relative;
+}
+
+.Logoload {
+  position: absolute; /* Position it relative to the .App */
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Center the div exactly */
+  animation: moveToLeft 1s ease-in-out 2.4s forwards; /* Delays the move until the fade-and-grow animation ends */
+}
+
+.heading1 {
+  display: flex; /* Initially stacked vertically */
+  flex-direction: column; /* Keep F and Orheen Ahmed stacked vertically */
+  align-items: center; /* Vertically align the text */
+  animation: changeToRow 0s ease-in-out forwards 3.4s; /* Change to row after fadeInName animation */
+}
+
+.letter {
+  color: white;
+  font-size: 3rem;
+  font-weight: bolder;
+  opacity: 0; /* Start fully transparent */
+  transform: scale(0); /* Start at 0 size */
+  animation: fadeAndGrow 2s ease-in forwards; /* Apply the animation */
+}
+
+.name {
+  color: white;
+  font-size: 0px; /* Smaller size for "Orheen Ahmed" */
+  font-weight: bolder;
+  opacity: 0; /* Initially hidden */
+  animation: fadeInName 1.5s  forwards 3.4s; /* Wait for the moveToLeft animation to complete */
+}
+
+@keyframes fadeAndGrow {
+  from {
+    opacity: 0;
+    transform: scale(0.5); /* Start scaled down */
+  }
+  to {
+    opacity: 1;
+    transform: scale(1); /* Grow to full size */
+  }
+}
+
+@keyframes fadeInName {
+  from {
+    font-size: 3rem;
+ 
+    opacity: 0; /* Start invisible */
+    transform: translateX(-30px); /* Slide in slightly from below */
+  }
+  to {
+    font-size: 3rem;
+
+    opacity: 1; /* Fully visible */
+    transform: translateX(0); /* No offset */
+  }
+}
+
+@keyframes moveToLeft {
+  from {
+    top: 50%; /* Start at center vertically */
+    left: 50%; /* Start at center horizontally */
+    transform: translate(-50%, -50%); /* Keep centered */
+  }
+  to {
+    top: 0; /* Move to the top */
+    left: 20px; /* 10px from the left */
+    transform: translate(0, 0); /* Remove centering */
+  }
+}
+
+@keyframes changeToRow {
+  from {
+    flex-direction: column; /* Start stacked vertically */
+  }
+  to {
+    flex-direction: row; /* Change to row after the fadeInName animation completes */
+  }
 }
 
 .container {
   display: flex;
   height: 100%;
   width: 100%;
-  background: linear-gradient(to right,#530505 80%, white 0%); /* Split the background */
 overflow: visible;
   position: relative;
+  opacity: 0; /* Initially hidden */
+  visibility: hidden; /* Initially invisible */
+  animation: fadeInContainer 2s ease-in forwards 3s;
 }
 
-.left-side {
-  width: 40%;
+.avatar {
+  width: 100%;
   height: 100%;
   position: relative;
 
   z-index: 1; /* Ensure left-side is in front */
   overflow:visible; /* Ensure content is clipped within the left-side */
 }
-.right-side {
-  width: 60%;
-  height: 100%;
-  z-index: 0; /* Ensure right-side is behind */
-  position: relative;
-  overflow-y: scroll; /* Makes the right side scrollable */
-  scrollbar-width: 1px; /* For Firefox */
-}
 
+@keyframes fadeInContainer {
+  from {
+    opacity: 0;
+    visibility: hidden;
+  }
+  to {
+    opacity: 1;
+    visibility: visible;
+
+  }
+}
 /* Optional: Add any other styling you want for your model container */
 canvas {
   position: absolute;
